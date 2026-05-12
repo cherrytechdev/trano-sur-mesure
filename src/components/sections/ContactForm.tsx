@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { MapPin, Mail, Phone, Gift } from 'lucide-react'
 import { Button } from '../shared/Button'
 
@@ -35,16 +34,15 @@ export function ContactForm() {
               Que vous ayez une idée précise ou besoin de conseils pour démarrer, notre équipe est à votre écoute pour concrétiser votre vision.
             </p>
 
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="bg-parchment p-8 mb-16 inline-flex items-center gap-6 self-start shadow-md border border-ink/5"
+            <div
+              className="bg-parchment p-8 mb-16 inline-flex items-center gap-6 self-start shadow-md border border-ink/5 hover:scale-[1.02] transition-transform duration-300"
             >
               <Gift className="text-laterite h-10 w-10 shrink-0" />
               <div>
                 <span className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink block mb-1">Cadeau Inclus</span>
                 <span className="text-ink/70 text-base">Première consultation d'une heure offerte.</span>
               </div>
-            </motion.div>
+            </div>
 
             <div className="space-y-8">
               {CONTACT_INFO.map(({ icon: Icon, text }) => (
@@ -58,48 +56,43 @@ export function ContactForm() {
             </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-parchment p-10 md:p-16 shadow-2xl"
-          >
+          <div className="contact-form bg-parchment p-10 md:p-16 shadow-2xl">
             <form className="flex flex-col gap-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-2 group">
-                  <label htmlFor="contact-name" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Nom complet *</label>
+                  <label htmlFor="contact-name" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors duration-300">Nom complet *</label>
                   <input
                     id="contact-name"
                     type="text"
                     placeholder="Jean Dupont"
-                    className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all"
+                    className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all duration-300 outline-none w-full"
                   />
                 </div>
                 <div className="flex flex-col gap-2 group">
-                  <label htmlFor="contact-email" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Email *</label>
+                  <label htmlFor="contact-email" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors duration-300">Email *</label>
                   <input
                     id="contact-email"
                     type="email"
                     placeholder="jean@exemple.com"
-                    className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all"
+                    className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all duration-300 outline-none w-full"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2 group">
-                <label htmlFor="contact-phone" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Téléphone</label>
+                <label htmlFor="contact-phone" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors duration-300">Téléphone</label>
                 <input
                   id="contact-phone"
                   type="tel"
                   placeholder="+261 34 00 000 00"
-                  className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all"
+                  className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all duration-300 outline-none w-full"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-2 group">
-                  <label htmlFor="contact-project-type" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Type de Projet</label>
-                  <select id="contact-project-type" className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink transition-all appearance-none cursor-pointer">
+                  <label htmlFor="contact-project-type" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors duration-300">Type de Projet</label>
+                  <select id="contact-project-type" className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink transition-all duration-300 outline-none w-full cursor-pointer">
                     <option value="">Sélectionnez...</option>
                     {PROJECT_TYPES.map((type) => (
                       <option key={type}>{type}</option>
@@ -107,8 +100,8 @@ export function ContactForm() {
                   </select>
                 </div>
                 <div className="flex flex-col gap-2 group">
-                  <label htmlFor="contact-budget" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Budget Estimatif</label>
-                  <select id="contact-budget" className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink transition-all appearance-none cursor-pointer">
+                  <label htmlFor="contact-budget" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors duration-300">Budget Estimatif</label>
+                  <select id="contact-budget" className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink transition-all duration-300 outline-none w-full cursor-pointer">
                     <option value="">Sélectionnez...</option>
                     {BUDGET_OPTIONS.map((opt) => (
                       <option key={opt}>{opt}</option>
@@ -118,20 +111,20 @@ export function ContactForm() {
               </div>
 
               <div className="flex flex-col gap-2 group">
-                <label htmlFor="contact-message" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Message</label>
+                <label htmlFor="contact-message" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors duration-300">Message</label>
                 <textarea
                   id="contact-message"
                   rows={4}
                   placeholder="Décrivez brièvement votre terrain et vos envies..."
-                  className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all resize-none"
+                  className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all duration-300 outline-none w-full resize-none min-h-[120px]"
                 />
               </div>
 
-              <Button type="submit" variant="primary" size="lg" arrow className="mt-4">
+              <Button type="submit" variant="accent" size="lg" arrow className="mt-4">
                 Envoyer la demande
               </Button>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

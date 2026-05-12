@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { SectionHeading } from '../shared/SectionHeading'
 
 const STEPS = [
@@ -21,13 +20,9 @@ export function Process() {
           <div className="hidden lg:block absolute top-[40px] left-0 w-full h-[1px] bg-parchment/10" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 relative z-10">
             {STEPS.map((step, idx) => (
-              <motion.div
+              <div
                 key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={`flex flex-col gap-4 ${idx % 2 !== 0 ? 'lg:mt-16' : ''}`}
+                className={`process-step flex flex-col gap-4 ${idx % 2 !== 0 ? 'lg:mt-16' : ''}`}
               >
                 <span className="font-serif italic text-6xl md:text-8xl text-laterite leading-none">
                   0{idx + 1}
@@ -36,7 +31,7 @@ export function Process() {
                   <h3 className="font-serif italic text-2xl text-parchment mb-2">{step.title}</h3>
                   <p className="text-parchment/60 text-base leading-relaxed">{step.desc}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

@@ -1,7 +1,6 @@
 'use client'
 
 import type React from 'react'
-import { motion } from 'framer-motion'
 import { Check, Gavel, Eye } from 'lucide-react'
 import { SectionHeading } from '../shared/SectionHeading'
 import { Button } from '../shared/Button'
@@ -81,17 +80,16 @@ export function Pricing() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-24">
           {PACKS.map((pack) => (
-            <motion.div
+            <div
               key={pack.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className={`p-10 flex flex-col h-full relative group cursor-pointer transition-all duration-500 overflow-hidden hover:shadow-xl ${
-                pack.popular ? 'bg-dark-parchment ring-1 ring-ink/10 md:scale-105 shadow-xl z-10' : 'bg-dark-parchment/60 opacity-70 hover:opacity-100 hover:bg-dark-parchment'
+              className={`pricing-pack p-10 flex flex-col h-full relative group cursor-pointer transition-all duration-500 overflow-hidden hover:shadow-2xl ${
+                pack.popular
+                  ? 'bg-dark-parchment ring-2 ring-laterite/20 md:scale-105 shadow-xl z-10 border-l-4 border-l-laterite'
+                  : 'bg-dark-parchment/60 opacity-80 hover:opacity-100 hover:bg-dark-parchment shadow-sm border-l-4 border-l-transparent hover:border-l-laterite/30'
               }`}
             >
               {pack.popular && (
-                <div className="absolute top-0 left-0 w-full bg-ink text-parchment font-sans font-bold text-[9px] uppercase tracking-[0.3em] py-2 text-center">
+                <div className="absolute top-0 left-0 w-full bg-gradient-to-r from-laterite to-ink text-parchment font-sans font-bold text-[9px] uppercase tracking-[0.3em] py-2 text-center">
                   Le plus choisi
                 </div>
               )}
@@ -105,24 +103,24 @@ export function Pricing() {
               <ul className="space-y-5 mb-12 flex-grow">
                 {pack.features.map((feature) => (
                   <li key={feature} className="flex gap-3 items-start group/feature">
-                    <Check size={18} className={`${pack.popular ? 'text-laterite' : 'text-ink/40 group-hover:text-laterite'} shrink-0 transition-colors`} />
+                    <Check size={18} className={`${pack.popular ? 'text-laterite' : 'text-ink/40 group-hover:text-laterite'} shrink-0 transition-all duration-300 group-hover:scale-110`} />
                     <span className={`text-base ${pack.popular ? 'text-ink font-medium' : 'text-ink/70 group-hover:text-ink'} transition-colors`}>{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <Button href="#contact" variant="primary" className="w-full" arrow>
+              <Button href="#contact" variant={pack.popular ? 'accent' : 'primary'} className="w-full" arrow>
                 {pack.cta}
               </Button>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {ADD_ONS.map((item) => (
-            <motion.div
+            <div
               key={item.title}
-              className="bg-dark-parchment p-8 flex items-center gap-6 shadow-sm border border-ink/5 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+              className="pricing-addon bg-dark-parchment p-8 flex items-center gap-6 shadow-sm border border-ink/5 cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-sm"
             >
               <div className="bg-parchment p-4 rounded-full">
                 <item.icon className="h-8 w-8 text-laterite" />
@@ -131,7 +129,7 @@ export function Pricing() {
                 <h4 className="font-serif italic text-xl text-ink mb-1">{item.title}</h4>
                 <p className="text-ink/60 text-sm">{item.desc}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

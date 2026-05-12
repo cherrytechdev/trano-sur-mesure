@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Plus } from 'lucide-react'
 import { SectionHeading } from '../shared/SectionHeading'
 import { Button } from '../shared/Button'
@@ -85,28 +84,25 @@ export function Portfolio() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {CONCEPTIONS.map((item) => (
-              <motion.div
+              <div
                 key={item.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="relative aspect-[4/5] overflow-hidden group cursor-pointer shadow-xl"
+                className="conception-card relative aspect-[4/5] overflow-hidden group cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
               >
+                <div className="absolute inset-0 bg-ink/10 z-[1] group-hover:bg-transparent transition-colors duration-500" />
                 <img
                   src={item.image}
                   alt={item.name}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
                   <div>
-                    <span className="font-sans font-bold text-[9px] uppercase tracking-[0.2em] text-laterite block mb-2">Concept architectural</span>
+                    <span className="font-sans font-bold text-[9px] uppercase tracking-[0.2em] text-laterite-light block mb-2">Concept architectural</span>
                     <h4 className="font-serif italic text-2xl text-parchment">{item.name}</h4>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -119,14 +115,10 @@ export function Portfolio() {
             </p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="bg-parchment flex flex-col lg:flex-row shadow-2xl relative overflow-hidden group"
-          >
+          <div className="travail-card bg-parchment flex flex-col lg:flex-row shadow-2xl relative overflow-hidden group border border-ink/5">
             <div className="lg:w-[60%] flex flex-col">
               <div className="aspect-[16/10] overflow-hidden relative bg-dark-parchment">
+                <div className="absolute inset-0 bg-ink/5 z-[1]" />
                 <img
                   src={currentTravail.image}
                   alt={currentTravail.name}
@@ -136,22 +128,26 @@ export function Portfolio() {
                 />
               </div>
 
-              <div className="grid grid-cols-4 gap-2 p-2 md:p-4 bg-parchment border-t border-ink/5">
+              <div className="grid grid-cols-4 gap-1 p-1 md:p-2 bg-parchment border-t border-ink/5">
                 {currentTravail.thumbs.map((thumb, i) => (
                   <div
                     key={thumb}
-                    className={`aspect-square overflow-hidden cursor-pointer ring-offset-2 transition-all ${i === 0 ? 'ring-2 ring-laterite' : 'opacity-60 hover:opacity-100'}`}
+                    className={`aspect-square overflow-hidden cursor-pointer ring-offset-2 transition-all duration-300 ${
+                      i === 0
+                        ? 'ring-2 ring-laterite ring-offset-1'
+                        : 'opacity-60 hover:opacity-100 hover:ring-2 hover:ring-ink/20 hover:ring-offset-1'
+                    }`}
                   >
                     <img src={thumb} alt={`Détail ${i + 1}`} loading="lazy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
                 ))}
-                  <button className="aspect-square bg-dark-parchment flex items-center justify-center cursor-pointer hover:bg-laterite hover:text-parchment transition-all" aria-label="Voir plus de photos">
-                    <Plus />
+                  <button className="aspect-square bg-dark-parchment flex items-center justify-center hover:bg-laterite hover:text-parchment transition-all duration-300" aria-label="Voir plus de photos">
+                    <Plus size={20} />
                   </button>
               </div>
             </div>
 
-            <div className="lg:w-[40%] p-10 md:p-16 flex flex-col justify-between">
+            <div className="lg:w-[40%] p-10 md:p-16 flex flex-col justify-between bg-gradient-to-br from-parchment to-dark-parchment/50">
               <div>
                 <h3 className="font-serif italic text-4xl text-ink mb-6">
                   {currentTravail.name}
@@ -192,7 +188,7 @@ export function Portfolio() {
                 </Button>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

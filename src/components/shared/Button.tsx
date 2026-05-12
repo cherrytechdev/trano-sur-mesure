@@ -4,7 +4,7 @@ import type React from 'react'
 import { forwardRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'icon'
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'icon' | 'accent'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
 interface ButtonBaseProps {
@@ -31,15 +31,17 @@ export type ButtonProps = ButtonAsButton | ButtonAsLink
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-ink text-parchment border-ink hover:bg-laterite hover:border-laterite',
+    'bg-ink text-parchment border-ink relative overflow-hidden after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-0 after:bg-laterite after:transition-all after:duration-500 hover:shadow-lg hover:shadow-ink/20 hover:after:w-3/4 hover:scale-[1.02] active:scale-[0.98]',
   secondary:
-    'bg-parchment text-ink border-parchment hover:bg-laterite hover:text-parchment hover:border-laterite',
+    'bg-transparent text-ink border-ink/20 hover:bg-ink hover:text-parchment hover:border-ink hover:shadow-lg hover:shadow-ink/10',
+  accent:
+    'bg-laterite text-parchment border-laterite hover:bg-laterite-dark hover:border-laterite-dark hover:shadow-xl hover:shadow-laterite/30 hover:scale-[1.02] active:scale-[0.98]',
   outline:
-    'bg-transparent text-ink border-ink/20 hover:bg-ink hover:text-parchment hover:border-ink',
+    'bg-transparent text-ink border-ink/30 shadow-[inset_0_0_0_1px_var(--color-ink)] hover:bg-[repeating-linear-gradient(45deg,var(--color-line)_0,var(--color-line)_1px,transparent_1px,transparent_10px)] hover:border-ink/60',
   ghost:
-    'bg-transparent text-parchment/80 hover:text-laterite border-transparent',
+    'bg-transparent text-parchment/80 hover:text-laterite border-transparent relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-laterite after:transition-all after:duration-500 hover:after:w-full',
   icon:
-    'bg-transparent text-ink border-ink/10 hover:bg-ink hover:text-parchment rounded-full',
+    'bg-transparent text-ink border-ink/10 hover:bg-laterite hover:text-parchment hover:border-laterite',
 }
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -52,18 +54,14 @@ function getBaseClasses() {
   return [
     'relative inline-flex items-center justify-center gap-3',
     'font-sans font-bold uppercase tracking-widest',
-    'border transition-all duration-500 overflow-hidden cursor-pointer',
+    'border transition-all duration-500 ease-out cursor-pointer',
     'focus-visible:outline-2 focus-visible:outline-laterite focus-visible:outline-offset-2',
+    'active:shadow-[0_0_0_3px_var(--color-laterite)]',
   ].join(' ')
 }
 
 function getVariantClasses(variant: ButtonVariant) {
-  let classes = variantStyles[variant]
-  if (variant === 'ghost') {
-    classes +=
-      ' after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-laterite after:transition-all after:duration-500 hover:after:w-full'
-  }
-  return classes
+  return variantStyles[variant]
 }
 
 function getSizeClasses(variant: ButtonVariant, size: ButtonSize) {
@@ -98,7 +96,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
           {arrow && (
             <ArrowRight
               size={14}
-              className="transition-transform duration-300 group-hover:translate-x-1"
+              className="transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110 shrink-0"
             />
           )}
         </a>
@@ -121,7 +119,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         {arrow && (
           <ArrowRight
             size={14}
-            className="transition-transform duration-300 group-hover:translate-x-1 shrink-0"
+            className="transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110 shrink-0"
           />
         )}
       </button>
