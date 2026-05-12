@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "../../lib/gsap";
-import { Building2, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "../shared/Button";
 
 const NAV_LINKS = [
@@ -59,8 +59,12 @@ export function Navbar() {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-ink py-4 shadow-xl" : "bg-ink/90 py-6"}`}
     >
       <div className="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center">
-        <a href="#" className="flex items-center gap-2 group">
-          <Building2 className="text-laterite h-8 w-8 transition-transform group-hover:scale-110" />
+        <a href="#" className="flex items-center gap-3 group">
+          <img
+            src="/images/logo.png"
+            alt="Trano Sur Mesure"
+            className="h-12 w-auto transition-transform group-hover:scale-105 duration-300"
+          />
           <span className="font-serif italic text-xl md:text-2xl text-parchment uppercase tracking-tight">
             Trano Sur Mesure
           </span>

@@ -8,6 +8,7 @@ import { Process } from "./components/sections/Process";
 import { Portfolio } from "./components/sections/Portfolio";
 import { Pricing } from "./components/sections/Pricing";
 import { ContactForm } from "./components/sections/ContactForm";
+import { DownloadGuide } from "./components/shared/DownloadGuide";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
       <footer>
         <Footer />
       </footer>
+      <DownloadGuide />
     </div>
   );
 }

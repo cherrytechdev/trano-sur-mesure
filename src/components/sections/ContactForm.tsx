@@ -1,6 +1,6 @@
 'use client'
 
-import { MapPin, Mail, Phone, Gift } from 'lucide-react'
+import { MapPin, Mail, Phone, Gift, ChevronDown } from 'lucide-react'
 import { Button } from '../shared/Button'
 
 const CONTACT_INFO = [
@@ -92,21 +92,27 @@ export function ContactForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-2 group">
                   <label htmlFor="contact-project-type" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors duration-300">Type de Projet</label>
-                  <select id="contact-project-type" className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink transition-all duration-300 outline-none w-full cursor-pointer">
-                    <option value="">Sélectionnez...</option>
-                    {PROJECT_TYPES.map((type) => (
-                      <option key={type}>{type}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select id="contact-project-type" defaultValue="" className="peer appearance-none bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink transition-all duration-300 outline-none w-full cursor-pointer">
+                      <option value="" disabled>Sélectionnez...</option>
+                      {PROJECT_TYPES.map((type) => (
+                        <option key={type} value={type}>{type}</option>
+                      ))}
+                    </select>
+                    <ChevronDown size={20} className="absolute right-0 top-1/2 -translate-y-1/2 text-ink/20 peer-focus:text-laterite pointer-events-none transition-colors duration-300" />
+                  </div>
                 </div>
                 <div className="flex flex-col gap-2 group">
                   <label htmlFor="contact-budget" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors duration-300">Budget Estimatif</label>
-                  <select id="contact-budget" className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink transition-all duration-300 outline-none w-full cursor-pointer">
-                    <option value="">Sélectionnez...</option>
-                    {BUDGET_OPTIONS.map((opt) => (
-                      <option key={opt}>{opt}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select id="contact-budget" defaultValue="" className="peer appearance-none bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 focus:shadow-[0_1px_0_#B85C38] px-0 py-4 text-lg text-ink transition-all duration-300 outline-none w-full cursor-pointer">
+                      <option value="" disabled>Sélectionnez...</option>
+                      {BUDGET_OPTIONS.map((opt) => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                    <ChevronDown size={20} className="absolute right-0 top-1/2 -translate-y-1/2 text-ink/20 peer-focus:text-laterite pointer-events-none transition-colors duration-300" />
+                  </div>
                 </div>
               </div>
 
