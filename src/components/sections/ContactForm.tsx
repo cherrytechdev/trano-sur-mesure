@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { MapPin, Mail, Phone, Gift } from 'lucide-react'
+import { Button } from '../shared/Button'
 
 const CONTACT_INFO = [
   { icon: MapPin, text: 'Antananarivo, Madagascar' },
@@ -48,10 +49,10 @@ export function ContactForm() {
             <div className="space-y-8">
               {CONTACT_INFO.map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-6 group cursor-pointer">
-                  <div className="p-4 bg-ink/5 group-hover:bg-laterite group-hover:text-parchment transition-all">
+                  <div className="p-4 bg-ink/5 group-hover:bg-laterite group-hover:text-parchment transition-all duration-300">
                     <Icon size={24} />
                   </div>
-                  <span className="text-lg text-ink">{text}</span>
+                  <span className="text-lg text-ink group-hover:text-laterite transition-colors duration-300">{text}</span>
                 </div>
               ))}
             </div>
@@ -66,16 +67,18 @@ export function ContactForm() {
             <form className="flex flex-col gap-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-2 group">
-                  <label className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Nom complet *</label>
+                  <label htmlFor="contact-name" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Nom complet *</label>
                   <input
+                    id="contact-name"
                     type="text"
                     placeholder="Jean Dupont"
                     className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all"
                   />
                 </div>
                 <div className="flex flex-col gap-2 group">
-                  <label className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Email *</label>
+                  <label htmlFor="contact-email" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Email *</label>
                   <input
+                    id="contact-email"
                     type="email"
                     placeholder="jean@exemple.com"
                     className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all"
@@ -84,8 +87,9 @@ export function ContactForm() {
               </div>
 
               <div className="flex flex-col gap-2 group">
-                <label className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Téléphone</label>
+                <label htmlFor="contact-phone" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Téléphone</label>
                 <input
+                  id="contact-phone"
                   type="tel"
                   placeholder="+261 34 00 000 00"
                   className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all"
@@ -94,18 +98,18 @@ export function ContactForm() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-2 group">
-                  <label className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Type de Projet</label>
-                  <select className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink transition-all appearance-none">
-                    <option disabled selected value="">Sélectionnez...</option>
+                  <label htmlFor="contact-project-type" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Type de Projet</label>
+                  <select id="contact-project-type" className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink transition-all appearance-none cursor-pointer">
+                    <option value="">Sélectionnez...</option>
                     {PROJECT_TYPES.map((type) => (
                       <option key={type}>{type}</option>
                     ))}
                   </select>
                 </div>
                 <div className="flex flex-col gap-2 group">
-                  <label className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Budget Estimatif</label>
-                  <select className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink transition-all appearance-none">
-                    <option disabled selected value="">Sélectionnez...</option>
+                  <label htmlFor="contact-budget" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Budget Estimatif</label>
+                  <select id="contact-budget" className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink transition-all appearance-none cursor-pointer">
+                    <option value="">Sélectionnez...</option>
                     {BUDGET_OPTIONS.map((opt) => (
                       <option key={opt}>{opt}</option>
                     ))}
@@ -114,17 +118,18 @@ export function ContactForm() {
               </div>
 
               <div className="flex flex-col gap-2 group">
-                <label className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Message</label>
+                <label htmlFor="contact-message" className="font-sans font-bold text-[10px] uppercase tracking-widest text-ink/40 group-focus-within:text-laterite transition-colors">Message</label>
                 <textarea
+                  id="contact-message"
                   rows={4}
                   placeholder="Décrivez brièvement votre terrain et vos envies..."
                   className="bg-transparent border-0 border-b border-ink/10 focus:border-laterite focus:ring-0 px-0 py-4 text-lg text-ink placeholder:text-ink/20 transition-all resize-none"
                 />
               </div>
 
-              <button className="bg-ink text-parchment font-sans font-bold text-[11px] uppercase tracking-[0.2em] py-6 hover:bg-laterite transition-all shadow-xl mt-4">
+              <Button type="submit" variant="primary" size="lg" arrow className="mt-4">
                 Envoyer la demande
-              </button>
+              </Button>
             </form>
           </motion.div>
         </div>

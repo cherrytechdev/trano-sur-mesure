@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Building2, Menu, X } from 'lucide-react'
+import { Button } from '../shared/Button'
 
 const NAV_LINKS = [
   { name: 'Accueil', href: '#accueil' },
@@ -42,15 +43,16 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="bg-laterite text-parchment font-sans font-semibold text-[11px] uppercase tracking-wider px-6 py-3 hover:bg-parchment hover:text-ink transition-all"
-          >
+          <Button href="#contact" variant="secondary" size="sm">
             Demander un devis
-          </a>
+          </Button>
         </nav>
 
-        <button className="md:hidden text-parchment" onClick={() => setIsOpen(!isOpen)}>
+        <button
+          className="md:hidden text-parchment p-2 -mr-2"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+        >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
@@ -73,13 +75,14 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            <a
+            <Button
               href="#contact"
+              variant="secondary"
+              className="w-full text-center"
               onClick={() => setIsOpen(false)}
-              className="bg-laterite text-parchment font-sans font-semibold text-center py-4"
             >
               Demander un devis
-            </a>
+            </Button>
           </motion.div>
         )}
       </AnimatePresence>

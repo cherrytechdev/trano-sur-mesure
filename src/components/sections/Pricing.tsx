@@ -4,6 +4,7 @@ import type React from 'react'
 import { motion } from 'framer-motion'
 import { Check, Gavel, Eye } from 'lucide-react'
 import { SectionHeading } from '../shared/SectionHeading'
+import { Button } from '../shared/Button'
 
 interface Pack {
   name: string
@@ -85,8 +86,8 @@ export function Pricing() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className={`p-10 flex flex-col h-full relative transition-all duration-500 overflow-hidden ${
-                pack.popular ? 'bg-dark-parchment ring-1 ring-ink/10 md:scale-105 shadow-xl z-10' : 'bg-dark-parchment/60 opacity-90'
+              className={`p-10 flex flex-col h-full relative group cursor-pointer transition-all duration-500 overflow-hidden hover:shadow-xl ${
+                pack.popular ? 'bg-dark-parchment ring-1 ring-ink/10 md:scale-105 shadow-xl z-10' : 'bg-dark-parchment/60 opacity-70 hover:opacity-100 hover:bg-dark-parchment'
               }`}
             >
               {pack.popular && (
@@ -103,16 +104,16 @@ export function Pricing() {
 
               <ul className="space-y-5 mb-12 flex-grow">
                 {pack.features.map((feature) => (
-                  <li key={feature} className="flex gap-3 items-start">
-                    <Check size={18} className={`${pack.popular ? 'text-laterite' : 'text-ink/40'} shrink-0`} />
-                    <span className={`text-base ${pack.popular ? 'text-ink font-medium' : 'text-ink/70'}`}>{feature}</span>
+                  <li key={feature} className="flex gap-3 items-start group/feature">
+                    <Check size={18} className={`${pack.popular ? 'text-laterite' : 'text-ink/40 group-hover:text-laterite'} shrink-0 transition-colors`} />
+                    <span className={`text-base ${pack.popular ? 'text-ink font-medium' : 'text-ink/70 group-hover:text-ink'} transition-colors`}>{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <a href="#contact" className="bg-ink text-parchment font-sans font-bold text-[11px] uppercase tracking-widest py-5 text-center hover:bg-laterite transition-all shadow-md">
+              <Button href="#contact" variant="primary" className="w-full" arrow>
                 {pack.cta}
-              </a>
+              </Button>
             </motion.div>
           ))}
         </div>
@@ -121,8 +122,7 @@ export function Pricing() {
           {ADD_ONS.map((item) => (
             <motion.div
               key={item.title}
-              whileHover={{ y: -5 }}
-              className="bg-dark-parchment p-8 flex items-center gap-6 shadow-sm border border-ink/5"
+              className="bg-dark-parchment p-8 flex items-center gap-6 shadow-sm border border-ink/5 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
             >
               <div className="bg-parchment p-4 rounded-full">
                 <item.icon className="h-8 w-8 text-laterite" />

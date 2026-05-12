@@ -39,7 +39,7 @@ export function Services() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className={`p-10 flex flex-col h-full relative group transition-all duration-500 overflow-hidden ${
+              className={`p-10 flex flex-col h-full relative group cursor-pointer transition-all duration-500 overflow-hidden hover:shadow-xl hover:-translate-y-1 ${
                 service.highlight ? 'bg-dark-parchment ring-1 ring-ink/5 pt-16' : 'bg-dark-parchment'
               }`}
             >

@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Button } from '../shared/Button'
 
 export function Hero() {
   return (
@@ -8,11 +9,12 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <img
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQMueDh0XVo80qVhTbE-n78GaghBypKhFhgP54577-nYJlDFvAi7hMpaougsP-jVphIOJf31jMPBul_arSWWNzlyI0DkmyZZbl14YuVMHjrkULMolbmnIxF9SdJLkAFObUaPGNbr93r_WMihQ6MqNvvWWUQelrbTU8jnjC7_ZdVZb4pp6isVNdp4ZeXCZXEV3zidkuMom0C60S4leURPriOobUDmQNMceYNCyI-atslmAOjPB696um89RLNEw1-nHt1hiAjwYfgEI_"
-          alt="Modern Villa Architecture"
+          alt=""
+          loading="lazy"
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/50 to-ink/20" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop pb-20 text-center flex flex-col items-center">
@@ -58,12 +60,12 @@ export function Hero() {
           transition={{ delay: 1 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <a href="#realisations" className="bg-ink text-parchment font-sans font-semibold text-[12px] uppercase tracking-widest px-10 py-5 hover:bg-laterite transition-all border border-parchment/10">
+          <Button href="#realisations" variant="primary" size="lg" arrow>
             Voir nos réalisations
-          </a>
-          <a href="#contact" className="bg-parchment text-ink font-sans font-semibold text-[12px] uppercase tracking-widest px-10 py-5 hover:bg-laterite hover:text-parchment transition-all">
+          </Button>
+          <Button href="#contact" variant="secondary" size="lg" arrow>
             Demander un devis gratuit
-          </a>
+          </Button>
         </motion.div>
       </div>
     </section>

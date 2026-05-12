@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Plus } from 'lucide-react'
 import { SectionHeading } from '../shared/SectionHeading'
+import { Button } from '../shared/Button'
 
 interface Conception {
   name: string
@@ -95,6 +96,7 @@ export function Portfolio() {
                 <img
                   src={item.image}
                   alt={item.name}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
@@ -128,6 +130,7 @@ export function Portfolio() {
                 <img
                   src={currentTravail.image}
                   alt={currentTravail.name}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -139,12 +142,12 @@ export function Portfolio() {
                     key={thumb}
                     className={`aspect-square overflow-hidden cursor-pointer ring-offset-2 transition-all ${i === 0 ? 'ring-2 ring-laterite' : 'opacity-60 hover:opacity-100'}`}
                   >
-                    <img src={thumb} alt={`Détail ${i}`} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    <img src={thumb} alt={`Détail ${i + 1}`} loading="lazy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
                 ))}
-                <div className="aspect-square bg-dark-parchment flex items-center justify-center cursor-pointer hover:bg-laterite hover:text-parchment transition-all">
-                  <Plus />
-                </div>
+                  <button className="aspect-square bg-dark-parchment flex items-center justify-center cursor-pointer hover:bg-laterite hover:text-parchment transition-all" aria-label="Voir plus de photos">
+                    <Plus />
+                  </button>
               </div>
             </div>
 
@@ -178,15 +181,15 @@ export function Portfolio() {
               </div>
 
               <div className="mt-16 flex justify-between items-center">
-                <button className="p-4 hover:bg-ink hover:text-parchment transition-all ring-1 ring-ink/10 rounded-full" disabled>
+                <Button variant="icon" disabled aria-label="Projet précédent">
                   <ArrowLeft size={20} />
-                </button>
+                </Button>
                 <span className="font-sans font-bold text-[11px] uppercase tracking-widest text-ink">
                   01 / 01
                 </span>
-                <button className="p-4 hover:bg-ink hover:text-parchment transition-all ring-1 ring-ink/10 rounded-full" disabled>
+                <Button variant="icon" disabled aria-label="Projet suivant">
                   <ArrowRight size={20} />
-                </button>
+                </Button>
               </div>
             </div>
           </motion.div>
